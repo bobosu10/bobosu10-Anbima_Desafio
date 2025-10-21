@@ -1,0 +1,26 @@
+server:
+  port: 8080
+  charset: UTF-8
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+
+spring:
+  main:
+    charset:
+      encoding: UTF-8
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pedidosdb
+    username: postgres
+    password: senha
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
