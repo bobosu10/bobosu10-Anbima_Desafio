@@ -14,10 +14,10 @@ class ConversorTest {
         Pedido pedido = Conversor.converter(linhaValida);
 
         assertEquals("HAMBURGUER", pedido.getTipoLanche());
-        assertEquals("CARNE", pedido.getProteina());
-        assertEquals("SALADA", pedido.getAcompanhamento());
+        assertEquals("CARNE     ", pedido.getProteina());
+        assertEquals("SALADA    ", pedido.getAcompanhamento());
         assertEquals(1, pedido.getQuantidade());
-        assertEquals("COCA", pedido.getBebida());
+        assertEquals("COCA    ", pedido.getBebida());
     }
 
     @Test
@@ -29,11 +29,11 @@ class ConversorTest {
 
         Pedido pedido = Conversor.converter(linhaValida);
 
-        assertEquals("PASTEL", pedido.getTipoLanche());
-        assertEquals("FRANGO", pedido.getProteina());
-        assertEquals("BACON", pedido.getAcompanhamento());
+        assertEquals("PASTEL    ", pedido.getTipoLanche());
+        assertEquals("FRANGO    ", pedido.getProteina());
+        assertEquals("BACON     ", pedido.getAcompanhamento());
         assertEquals(2, pedido.getQuantidade());
-        assertEquals("SUCO", pedido.getBebida());
+        assertEquals("SUCO    ", pedido.getBebida());
     }
 
     @Test
@@ -60,8 +60,11 @@ class ConversorTest {
 
         Pedido pedido = Conversor.converter(linhaQuebrada);
 
+        assertEquals("HAMBURGUER", pedido.getTipoLanche());
+        assertEquals("CARNE     ", pedido.getProteina());
+        assertEquals("SALADA    ", pedido.getAcompanhamento());
         assertEquals(1, pedido.getQuantidade());
-        assertEquals("COCA", pedido.getBebida());
+        assertEquals("COCA    ", pedido.getBebida());
     }
 
     @Test

@@ -26,11 +26,11 @@ public class Conversor {
         // Conversão
         try {
             Pedido pedido = new Pedido();
-            pedido.setTipoLanche(linhaLimpa.substring(0, 10).trim());
-            pedido.setProteina(linhaLimpa.substring(10, 20).trim());
-            pedido.setAcompanhamento(linhaLimpa.substring(20, 30).trim());
+            pedido.setTipoLanche(linhaLimpa.substring(0, 10));
+            pedido.setProteina(linhaLimpa.substring(10, 20));
+            pedido.setAcompanhamento(linhaLimpa.substring(20, 30));
             pedido.setQuantidade(Integer.parseInt(linhaLimpa.substring(30, 32)));
-            pedido.setBebida(linhaLimpa.substring(32, 40).trim());
+            pedido.setBebida(linhaLimpa.substring(32, 40));
             return pedido;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("O campo 'quantidade' (posições 31-32) deve ser numérico.");
