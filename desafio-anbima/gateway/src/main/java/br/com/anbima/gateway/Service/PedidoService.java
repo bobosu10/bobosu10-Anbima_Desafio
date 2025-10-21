@@ -38,7 +38,7 @@ public class PedidoService {
         if (pedido.getTipoLanche().trim().equalsIgnoreCase("HAMBURGUER")
             && pedido.getProteina().trim().equalsIgnoreCase("CARNE")
                 && pedido.getAcompanhamento().trim().equalsIgnoreCase("SALADA")){
-            total = total.multiply(BigDecimal.valueOf(0.5));
+            total = total.multiply(BigDecimal.valueOf(0.9));
         }
 
         pedido.setValor(total);
