@@ -25,6 +25,10 @@ public class PedidoService {
     public PedidoResponseDTO processarLinha(String linha){
         Pedido pedido = Conversor.converter(linha);
 
+        if (pedido.getQuantidade() < 1 || pedido.getQuantidade() > 99){
+            throw new IllegalArgumentException("A quantidade deve ser um valor entre 01 e 99.");
+        }
+
         //regras para preco
         BigDecimal base = switch (pedido.getTipoLanche().trim().toUpperCase()){
             case "HAMBURGUER" -> BigDecimal.valueOf(20);
