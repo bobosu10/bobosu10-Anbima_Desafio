@@ -6,6 +6,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/pedidosdb
     username: postgres
     password: senha
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
