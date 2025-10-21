@@ -1,9 +1,11 @@
 package br.com.anbima.gateway.Service;
 
+import br.com.anbima.gateway.Dto.PedidoResponseDTO;
 import br.com.anbima.gateway.Entity.Pedido;
 import br.com.anbima.gateway.Messaging.PedidoProducer;
 import br.com.anbima.gateway.Repository.PedidoRepository;
 import br.com.anbima.gateway.Util.Conversor;
+import br.com.anbima.gateway.Util.PedidoMapper;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -20,7 +22,7 @@ public class PedidoService {
         this.repository = repository;
     }
 
-    public Pedido processarLinha(String linha){
+    public PedidoResponseDTO processarLinha(String linha){
         Pedido pedido = Conversor.converter(linha);
 
         //regras para preco
@@ -46,6 +48,6 @@ public class PedidoService {
 
         producer.enviarPedidoRecebido(salvo.getId());
 
-        return salvo;
+        return PedidoMapper.toDTO(salvo);
     }
 }

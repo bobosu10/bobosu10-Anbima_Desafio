@@ -1,6 +1,7 @@
 package br.com.anbima.gateway.Entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 @Table(name = "pedidos")
 @Data
 @Entity
+@Builder
 public class Pedido {
 
     @Id
