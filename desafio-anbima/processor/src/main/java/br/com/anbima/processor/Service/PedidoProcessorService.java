@@ -3,7 +3,7 @@ package br.com.anbima.processor.Service;
 import br.com.anbima.processor.Entity.Pedido;
 import br.com.anbima.processor.Repository.PedidoRepository;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
