@@ -1,6 +1,6 @@
 <h2>Lista de Pedidos</h2>
 
-<button (click)="carregarPedidos()" [disable]="isLoading">
+<button (click)="carregarPedidos()" [disabled]="isLoading">
     {{ isLoading ? 'Carregando...' : 'Atualizar Lista'}}
 </button>
 
@@ -28,7 +28,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let pedido of pedidos">
             <td>{{ pedido.id }}</td>
             <td>{{ pedido.tipoLanche }}</td>
             <td>{{ pedido.proteina }}</td>

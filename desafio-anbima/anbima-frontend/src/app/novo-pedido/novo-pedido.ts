@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { PedidoService, PedidoResponse } from '../pedido'; 
 import { FormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common'; 
-import { response } from 'express';
-import { error } from 'console';
 
 @Component({
   selector: 'app-novo-pedido',
@@ -39,6 +37,7 @@ export class NovoPedido {
             },
             error: (error) => {
                 console.error('Erro ao enviar pedido:', error);
+                //mensagem de erro da resposta http senao usa a padrao
                 this.erro = error.error?.message || error.message || 'Erro desconhecido ao enviar o pedido.';
                 this.isLoading = false;
             }

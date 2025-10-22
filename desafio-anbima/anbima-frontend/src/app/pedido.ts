@@ -28,7 +28,7 @@ export class PedidoService {
 
     enviarPedidoPosicional(linhaPosicional: string): Observable<PedidoResponse> {
         const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
-        return this.http.post<PedidoResponse>('${this.apiUrlGateway}/posicional', linhaPosicional, { headers: headers});
+        return this.http.post<PedidoResponse>(`${this.apiUrlGateway}/posicional`, linhaPosicional, { headers: headers});
     }
 
     listarTodosPedidos(): Observable<PedidoResponse[]> {
@@ -36,6 +36,6 @@ export class PedidoService {
     }
 
     buscarPedidoPorId(id:number): Observable<PedidoResponse> {
-        return this.http.get<PedidoResponse>('${this.apiUrlProcessor}/${id}');
+        return this.http.get<PedidoResponse>(`${this.apiUrlProcessor}/${id}`);
     }
 }
