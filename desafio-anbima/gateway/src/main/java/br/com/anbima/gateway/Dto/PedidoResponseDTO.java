@@ -7,7 +7,7 @@ public record PedidoResponseDTO (
         Long id,
         String tipoLanche,
         String proteina,
-        String acompanhanmento,
+        String acompanhamento,
         Integer quantidade,
         String bebida,
         BigDecimal valor,
