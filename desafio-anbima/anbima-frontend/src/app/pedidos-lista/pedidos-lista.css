@@ -1,18 +1,114 @@
-button {
-  margin-right: 6px;
-  padding: 5px 10px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
+h2 {
+  color: #e63946;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
-button[disabled] {
-  background-color: #cccccc;
+/* FILTROS  */
+div[style*="Filtrar"] {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+div[style*="Filtrar"] button {
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  background-color: #f77f00; 
+}
+
+div[style*="Filtrar"] button[disabled] {
+  background-color: #ffc77d;
   cursor: not-allowed;
 }
 
-button:not([disabled]):hover {
-  background-color: #0056b3;
+div[style*="Filtrar"] button:not([disabled]):hover {
+  background-color: #d65a00;
+  transform: translateY(-2px);
+}
+
+/* TABELA  */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+th {
+  background-color: #1d3557; 
+  color: #fff;
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 14px;
+}
+
+tr:nth-child(even) {
+  background-color: #fef9f5; 
+}
+
+tr:hover {
+  background-color: #fff2e6; 
+  transition: background-color 0.3s ease;
+}
+
+/*CORES DE STATUS  */
+td[style*="color: green"] {
+  font-weight: bold;
+  color: #06d6a0 !important;
+}
+
+td[style*="color: orange"] {
+  font-weight: bold;
+  color: #f77f00 !important;
+}
+
+/* MENSAGENS DE ERRO */
+strong {
+  color: #e63946;
+}
+
+/* Responsividade */
+
+@media (max-width: 700px) {
+  nav {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  tr {
+    margin-bottom: 15px;
+  }
+
+  td {
+    padding: 8px 10px;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+  }
 }
