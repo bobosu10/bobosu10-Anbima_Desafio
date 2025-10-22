@@ -1,1 +1,20 @@
-<p>novo-pedido works!</p>
+<h2>Novo Pedido Posicional</h2>
+
+<div>
+    <label for="linhaPosional">Linha Posicional (40 caracteres):</label><br>
+    <textarea id="linhaPosional" rows="3" cols="50" maxlength="40" [(ngModel)]="linhaPosicional"></textarea>
+    <br>
+    <button (click)="enviarPedido()" [disabled]="isLoading || linhaPosicional.length !== 40">
+        {{ isLoading ? 'Enviando...' : 'Enviar Pedido'}}
+    </button>
+</div>
+
+<div *ngIf="erro" style="color: red; margin-top: 10px;">
+    <strong>Erro:</strong>
+    {{ erro }}
+</div>
+
+<div *ngIf="resultado" style="margin-top: 10px; background-color: #e0ffe0; padding: 10px; border: 1px solid green;">
+    <strong>Pedido Criado com sucesso</strong>
+    <pre>{{ resultado | json }}</pre>
+</div>
