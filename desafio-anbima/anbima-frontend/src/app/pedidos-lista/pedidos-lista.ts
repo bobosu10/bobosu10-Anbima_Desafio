@@ -2,6 +2,7 @@ import { Component , OnInit} from '@angular/core';
 import { PedidoService , PedidoResponse } from '../pedido';
 import { CommonModule } from '@angular/common';
 import { error } from 'console';
+import { stat } from 'fs';
 
 @Component({
   selector: 'app-pedidos-lista',
@@ -15,6 +16,7 @@ export class PedidosLista implements OnInit {
     pedidos: PedidoResponse[] = [];
     erro: string | null = null;
     isLoading: boolean = false;
+    filtroStatus: 'TODOS' | 'RECEBIDO' | 'ENTREGUE' = 'TODOS';
 
     constructor(private pedidoService: PedidoService) {}
 
@@ -36,5 +38,16 @@ export class PedidosLista implements OnInit {
                 this.isLoading = false;
             }
         });
+    }
+
+    definirFiltro(status: 'TODOS' | 'RECEBIDO' | 'ENTREGUE'){
+        this.filtroStatus = status;
+    }
+
+    get pedidosFiltrados(): PedidoResponse[]{
+        if (this.filtroStatus == 'TODOS') {
+            return this.pedidos;
+        }
+        return this.pedidos.filter(pedido => pedido.status === this.filtroStatus);
     }
 }

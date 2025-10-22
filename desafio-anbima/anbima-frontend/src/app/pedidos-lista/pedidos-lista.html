@@ -4,6 +4,13 @@
     {{ isLoading ? 'Carregando...' : 'Atualizar Lista'}}
 </button>
 
+<div style="margin-top: 10px;">
+    <span style="margin-right: 10px;">Filtrar por Status</span>
+    <button (click)="definirFiltro('TODOS')" [disabled]="filtroStatus === 'TODOS'">TODOS</button>
+    <button (click)="definirFiltro('RECEBIDO')" [disabled]="filtroStatus === 'RECEBIDO'">RECEBIDO</button>
+    <button (click)="definirFiltro('ENTREGUE')" [disabled]="filtroStatus === 'ENTREGUE'">ENTREGUE</button>
+</div>
+
 <div *ngIf="erro" style="color: red; margin-top: 10px;">
     <strong>Erro:</strong>
     {{ erro }}
@@ -13,7 +20,7 @@
     Carregando pedidos...
 </div>
 
-<table *ngIf="!isLoading && pedidos.length > 0" border="1" style="margin-top: 10px; border-collapse: collapse; width: 100%;">
+<table *ngIf="!isLoading && pedidosFiltrados.length > 0" border="1" style="margin-top: 10px; border-collapse: collapse; width: 100%;">
     <thead>
         <tr>
             <th>ID</th>
@@ -28,20 +35,20 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let pedido of pedidos">
+        <tr *ngFor="let pedido of pedidosFiltrados">
             <td>{{ pedido.id }}</td>
             <td>{{ pedido.tipoLanche }}</td>
             <td>{{ pedido.proteina }}</td>
             <td>{{ pedido.acompanhamento }}</td>
             <td>{{ pedido.quantidade }}</td>
             <td>{{ pedido.bebida }}</td>
-            <td>{{ pedido.valor }}</td>
-            <td>{{ pedido.status }}</td>
-            <td>{{ pedido.criadoEm }}</td>
+            <td>{{ pedido.valor | currency: 'BRL'}}</td>
+            <td [style.color]="pedido.status === 'ENTREGUE' ? 'green' : 'orange'">{{ pedido.status }}</td>
+            <td>{{ pedido.criadoEm | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
         </tr>
     </tbody>
 </table>
 
-<div *ngIf="!isLoading && pedidos.length === 0 && !erro" style="margin-top: 10px;">
-    Nenhum pedido encontrado.
+<div *ngIf="!isLoading && pedidosFiltrados.length === 0 && !erro" style="margin-top: 10px;">
+    Nenhum pedido encontrado {{ filtroStatus !== 'TODOS' ? 'para o status "' + filtroStatus + '"' : '' }}.
 </div>
