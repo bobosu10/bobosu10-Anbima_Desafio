@@ -1,1 +1,47 @@
-<p>pedidos-lista works!</p>
+<h2>Lista de Pedidos</h2>
+
+<button (click)="carregarPedidos()" [disable]="isLoading">
+    {{ isLoading ? 'Carregando...' : 'Atualizar Lista'}}
+</button>
+
+<div *ngIf="erro" style="color: red; margin-top: 10px;">
+    <strong>Erro:</strong>
+    {{ erro }}
+</div>
+
+<div *ngIf="isLoading && pedidos.length === 0" style="margin-top: 10px;">
+    Carregando pedidos...
+</div>
+
+<table *ngIf="!isLoading && pedidos.length > 0" border="1" style="margin-top: 10px; border-collapse: collapse; width: 100%;">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tipo Lanche</th>
+            <th>Proteina</th>
+            <th>Acompanhamento</th>
+            <th>Quantidade</th>
+            <th>Bebida</th>
+            <th>valor</th>
+            <th>Status</th>
+            <th>Criado em</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ pedido.id }}</td>
+            <td>{{ pedido.tipoLanche }}</td>
+            <td>{{ pedido.proteina }}</td>
+            <td>{{ pedido.acompanhamento }}</td>
+            <td>{{ pedido.quantidade }}</td>
+            <td>{{ pedido.bebida }}</td>
+            <td>{{ pedido.valor }}</td>
+            <td>{{ pedido.status }}</td>
+            <td>{{ pedido.criadoEm }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="!isLoading && pedidos.length === 0 && !erro" style="margin-top: 10px;">
+    Nenhum pedido encontrado.
+</div>
